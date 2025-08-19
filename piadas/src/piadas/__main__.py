@@ -1,8 +1,8 @@
 import requests
 
 def main():
-    url = "https://official-joke-api.appspot.com/random_joke"
-    resp = requests.get(url)
+    URL = "https://official-joke-api.appspot.com/random_joke"
+    resp = requests.get(URL)
 
     if resp.status_code == 200:
         joke = resp.json()
