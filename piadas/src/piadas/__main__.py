@@ -6,11 +6,11 @@ def main():
 
     if resp.status_code == 200:
         joke = resp.json()
-        print("😂 Piada do dia:")
+        print("Piada do dia:")
         print(joke["setup"])
         print(joke["punchline"])
     else:
-        print("Erro ao buscar piada!")
+        print("Não encontrei nenhuma piada!")
 
 if __name__ == "__main__":
     main()
