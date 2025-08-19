@@ -1,0 +1,23 @@
+[project]
+name = "piadas"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "biancarsouza",email = "bianca.ribeiro@ges.inatel.br"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "requests (>=2.32.5,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "piadas", from = "src"}]
+
+[tool.poetry.scripts]
+piadas = "src.piadas.__main__:main"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
