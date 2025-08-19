@@ -70,7 +70,7 @@ piadas/
  ├─ tests/             # pasta vazia para futuros testes
  ├─ pyproject.toml     # config do Poetry
  ├─ poetry.lock        # lockfile das dependências
- └─ README.md          # documentação do projeto
+ ├─ README.md          # documentação do projeto
  └─ .gitignore         # reponsável por não subir certos arquivos existentes no computador
 ```
 
