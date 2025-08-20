@@ -79,3 +79,9 @@ piadas/
 ## 📚 Dependências
 
 - [requests](https://pypi.org/project/requests/) – para fazer chamadas HTTP.
+
+---
+
+## Resolução de conflitos
+
+- Durante o desenvolvimento, eu e [Lavínia](github.com/laviniaribeiro) criamos alguns conflitos de Merge propositalmente. Tentamos alterar o nome da mesma variável, o que foi resolvido na hora de dar push na segunda alteração para que pudessemos dar merge.
