@@ -8,7 +8,7 @@ import requests
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 # Importa a função main do módulo correto
-from piadas import main
+from src.piadas.__main__ import main
 
 class TestPiadas(unittest.TestCase):
     

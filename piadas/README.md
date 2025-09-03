@@ -84,12 +84,6 @@ piadas/
 
 ---
 
-## Resolução de conflitos
-
-- Durante o desenvolvimento, eu e [Lavínia](github.com/laviniaribeiro) criamos alguns conflitos de Merge propositalmente. Tentamos alterar o nome da mesma variável, o que foi resolvido na hora de dar push na segunda alteração para que pudessemos dar merge.
-
----
-
 ## Testes unitários desenvolvidos
 
 1. Casos positivos
@@ -137,3 +131,10 @@ Ran 20 tests in 0.025s
 
 OK
 ```
+
+---
+
+## Resolução de conflitos
+
+- Durante o desenvolvimento, eu e [Lavínia](github.com/laviniaribeiro) criamos alguns conflitos de Merge propositalmente. Tentamos alterar o nome da mesma variável, o que foi resolvido na hora de dar push na segunda alteração para que pudessemos dar merge.
+- No desenvolvimento dos testes, [Lavínia](github.com/laviniaribeiro) alterou no arquivo "test_piadas.py" o nome do arquivo de onde estava localizada a main. Para resolver, voltei o nome para o original, já que alterar o nome do arquivo em si como ela colocou me faria alterar mais linhas de código.
