@@ -67,7 +67,9 @@ piadas/
  ├─ src/piadas/        # código-fonte
  │   ├─ __main__.py    # ponto de entrada da aplicação
  │   └─ __init__.py
- ├─ tests/             # pasta vazia para futuros testes
+ ├─ tests/      
+ │   ├─ __main__.py    # arquivo contendo os testes unitários desenvolvidos
+ │   └─ __init__.py    
  ├─ pyproject.toml     # config do Poetry
  ├─ poetry.lock        # lockfile das dependências
  ├─ README.md          # documentação do projeto
@@ -85,3 +87,53 @@ piadas/
 ## Resolução de conflitos
 
 - Durante o desenvolvimento, eu e [Lavínia](github.com/laviniaribeiro) criamos alguns conflitos de Merge propositalmente. Tentamos alterar o nome da mesma variável, o que foi resolvido na hora de dar push na segunda alteração para que pudessemos dar merge.
+
+---
+
+## Testes unitários desenvolvidos
+
+1. Casos positivos
+- test_main_successful_response - Resposta bem-sucedida da API com piada completa
+- test_main_different_joke - Diferentes formatos e conteúdos de piadas
+- test_main_special_characters - Caracteres especiais e acentuação em piadas
+- test_main_empty_strings - Strings vazias (caso extremo de validação)
+- test_main_long_joke - Piadas com texto mais extenso
+- test_main_multiple_calls - Múltiplas execuções consecutivas
+- test_main_extra_fields - Resposta com campos extras no JSON
+- test_main_numeric_values - Valores numéricos nos campos da piada
+- test_main_no_exception - Verificação de ausência de exceções
+- test_main_normal_operation - Operação padrão do programa
+
+2. Casos negativos
+- test_main_404_error - Simula erro HTTP 404 (Não Encontrado)
+- test_main_500_error - Simula erro HTTP 500 (Erro Interno)
+- test_main_timeout - Timeout na requisição à API
+- test_main_connection_error - Erro de conexão com a API
+- test_main_json_error - Erro na decodificação do JSON
+- test_main_missing_setup - Campo 'setup' faltando na resposta
+- test_main_missing_punchline - Campo 'punchline' faltando na resposta
+- test_main_empty_json - Resposta com JSON vazio
+- test_main_null_values - Valores null nos campos obrigatórios
+- test_main_general_exception - Exceções genéricas inesperadas
+
+
+Para executar os testes:
+```bash
+# Executar toda a suíte de testes
+poetry run python -m unittest discover tests -v
+
+# Executar apenas os testes do arquivo principal
+poetry run python -m unittest tests/test_piadas.py -v
+```
+
+**Exemplo de saída:**
+```
+test_main_404_error (test_piadas.TestPiadas.test_main_404_error) ... ok
+test_main_500_error (test_piadas.TestPiadas.test_main_500_error) ... ok
+test_main_connection_error (test_piadas.TestPiadas.test_main_connection_error) ... ok
+...
+----------------------------------------------------------------------
+Ran 20 tests in 0.025s
+
+OK
+```
