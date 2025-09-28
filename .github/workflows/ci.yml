@@ -40,7 +40,6 @@ jobs:
   # 2️⃣ - Build (empacotamento)
   build:
     runs-on: ubuntu-latest
-    needs: tests
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v3
