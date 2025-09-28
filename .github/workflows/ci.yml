@@ -32,7 +32,7 @@ jobs:
         if: always()
         run: pytest --junitxml=tests_report.xml
       - name: Upload do relatório
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: relatorio-testes
           path: tests_report.xml
@@ -52,7 +52,7 @@ jobs:
           echo "Pacote criado com sucesso!"
 
       - name: Upload do pacote
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pacote-piadas
           path: dist/
