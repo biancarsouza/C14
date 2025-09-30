@@ -1,26 +1,35 @@
 import os
 import smtplib
+import ssl
 from email.mime.text import MIMEText
 
 def send_notification():
-    # Lê o e-mail do ambiente
     recipient = os.getenv("NOTIFY_EMAIL")
-    if not recipient:
-        raise ValueError("Variável de ambiente NOTIFY_EMAIL não definida!")
+    sender_email = os.getenv("SMTP_USER")
+    password = os.getenv("SMTP_PASS")
 
-    # Cria a mensagem
-    msg = MIMEText("Pipeline executado com sucesso!")
+    if not all([recipient, sender_email, password]):
+        raise ValueError("Variáveis de ambiente NOTIFY_EMAIL, SMTP_USER ou SMTP_PASS não definidas!")
+
+    # Cria a mensagem do e-mail
+    msg = MIMEText("Pipeline executado com sucesso! ✅")
     msg["Subject"] = "Status do Pipeline"
-    msg["From"] = "ci-cd@example.com"
+    msg["From"] = sender_email
     msg["To"] = recipient
 
-    # Aqui usamos localhost como exemplo. No mundo real, configure SMTP.
+    # Conecta ao servidor SMTP do Gmail
+    smtp_server = "smtp.gmail.com"
+    port = 587
+    context = ssl.create_default_context()
+
     try:
-        with smtplib.SMTP("localhost") as server:
-            server.sendmail("ci-cd@example.com", [recipient], msg.as_string())
-        print("Notificação enviada com sucesso!")
+        with smtplib.SMTP(smtp_server, port) as server:
+            server.starttls(context=context)
+            server.login(sender_email, password)
+            server.sendmail(sender_email, recipient, msg.as_string())
+        print("✅ E-mail enviado com sucesso!")
     except Exception as e:
-        print(f"Erro ao enviar e-mail: {e}")
+        print(f"❌ Erro ao enviar e-mail: {e}")
 
 if __name__ == "__main__":
     send_notification()
