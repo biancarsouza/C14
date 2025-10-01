@@ -11,13 +11,11 @@ def send_notification():
     if not all([recipient, sender_email, password]):
         raise ValueError("Variáveis de ambiente NOTIFY_EMAIL, SMTP_USER ou SMTP_PASS não definidas!")
 
-    # Cria a mensagem do e-mail
     msg = MIMEText("Pipeline executado com sucesso! ✅")
     msg["Subject"] = "Status do Pipeline"
     msg["From"] = sender_email
     msg["To"] = recipient
 
-    # Conecta ao servidor SMTP do Gmail
     smtp_server = "smtp.gmail.com"
     port = 587
     context = ssl.create_default_context()
@@ -27,9 +25,9 @@ def send_notification():
             server.starttls(context=context)
             server.login(sender_email, password)
             server.sendmail(sender_email, recipient, msg.as_string())
-        print("✅ E-mail enviado com sucesso!")
     except Exception as e:
-        print(f"❌ Erro ao enviar e-mail: {e}")
+        # não derruba o pipeline em caso de falha
+        exit(0)
 
 if __name__ == "__main__":
     send_notification()
