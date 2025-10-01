@@ -31,6 +31,7 @@ jobs:
       - name: Salvar relatório de testes
         if: always()
         run: pytest --junitxml=tests_report.xml
+
       - name: Upload do relatório
         uses: actions/upload-artifact@v4
         with:
@@ -58,19 +59,15 @@ jobs:
 
   # 3️⃣ - Notificação por e-mail
   notify:
-  runs-on: ubuntu-latest
-  needs: [tests, build]
-  steps:
-    - name: Checkout do repositório
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    needs: [tests, build]
+    steps:
+      - name: Instalar dependências
+        run: pip install requests
 
-    - name: Instalar dependências
-      run: pip install requests
-
-    - name: Enviar notificação por e-mail
-      env:
-        NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
-        SMTP_USER: ${{ secrets.SMTP_USER }}
-        SMTP_PASS: ${{ secrets.SMTP_PASS }}
-      run: python scripts/send_email.py
-
+      - name: Enviar notificação por e-mail
+        env:
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: python scripts/send_email.py
